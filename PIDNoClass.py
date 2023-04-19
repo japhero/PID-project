@@ -1,3 +1,4 @@
+import math
 import time
 from plotLive import liveGraph
 import tkinter as tk
@@ -21,7 +22,7 @@ graph = liveGraph(Ylimits=[0,100],TkinterScale=False)
 
 kp = .5
 ki = .02
-kd = .3
+kd = .02
 prevPoint =0
 input = 0
 setPoint = 50
@@ -43,21 +44,23 @@ for val in range(1,4):
     #     setPoint = 20
     # elif val == 3:
     #     setPoint = 80
-    for num in range(100):
+    while True:
         window.update()
 
         time.sleep(.01)
 
         #print(f'KP: {(kp * (setPoint - input))} = {kp}* {setPoint} - {input}')
-        print(f"{input}")
+        print(f"{output} {setPoint} ")
 
         output += (kp * (setPoint - input))
         integral += (setPoint - input) * time.process_time()
         output += (ki * integral)
         output += kd * ((setPoint - input) - lastError / time.process_time())
 
+
+
         lastError = setPoint - input
-        input = output
+        input += output
         graph.update(input)
         pass
 
