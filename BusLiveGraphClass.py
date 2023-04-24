@@ -111,8 +111,4 @@ class liveGraph:
         # https://matplotlib.org/stable/tutorials/advanced/blitting.html#sphx-glr-tutorials-advanced-blitting-py
 
 
-obj = liveGraph(InputItems=[1, 3,4,5])
 
-
-for x in range(100):
-    obj.update([3,x/10,4,5])

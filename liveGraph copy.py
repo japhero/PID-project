@@ -105,4 +105,4 @@ class liveGraph:
         # https://matplotlib.org/stable/tutorials/advanced/blitting.html#sphx-glr-tutorials-advanced-blitting-py
 
 
-obj = liveGraph(InputItems=[1, 3])
+obj = liveGraph(InputItems=[2, 3])
