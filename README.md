@@ -1,0 +1,9 @@
+# PID-project
+
+
+
+# WIRING
+ROT ENCODER (CLK, 9) (DT, 10) (SW, 11)
+LCD 
+PHOTO INT
+SERVO (IN, 13
