@@ -19,10 +19,10 @@ mainMenu = 1
 
 PidState = False
 
-
+setPoint =0
 
 def setButtonVar(*args):
-    global buttonVar, PidState, mainMenu
+    global buttonVar, PidState, mainMenu,setPoint
     if int(scaleVal.get()) % 3 == 2 and ( mainMenu == 1 or mainMenu ==2):
 
         mainMenu =3
@@ -30,6 +30,7 @@ def setButtonVar(*args):
     else:
         if mainMenu == 3:
             mainMenu =2
+            setPoint = abs(scaleVal.get())
         else:
             mainMenu =1
 
@@ -47,6 +48,6 @@ while True:
         textVar.set(mainList[int(scaleVal.get() % 3)])
     else:
         textVar.set(f"press to exit setpoint = {abs(scaleVal.get())}")
-
+    print(setPoint)
     time.sleep(.01)
     root.update()
