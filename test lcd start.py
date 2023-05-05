@@ -9,10 +9,9 @@ inP.pull = Pull.DOWN
 
 led = DigitalInOut(board.D13)
 led.direction = Direction.OUTPUT
+led.value = False
+time.sleep(.5)
+led.value = True
 
 while True:
-    led.value = True
-    time.sleep(1)
-    led.value = False
-    time.sleep(1)
-    print(inP.value)
+    pass

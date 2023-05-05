@@ -8,8 +8,9 @@ import digitalio
 led = digitalio.DigitalInOut(board.D13)
 led.direction = digitalio.Direction.OUTPUT
 
+led.value = False
+time.sleep(.5)
 led.value = True
-
 i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
 
@@ -45,10 +46,8 @@ def retEnc(x):
 
 
 
-
 while True:
-    lcd.print(retEnc(enc.position))
-    time.sleep(.001)
-    lcd.clear()
+    
+    time.sleep(.1)
     print(f"{retEnc(enc.position)} {enc.position} {encBtn.value}")
         
