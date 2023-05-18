@@ -13,7 +13,7 @@ photoIn.pull  = digitalio.Pull.UP
 pwm = pwmio.PWMOut(board.D11)
 pwm.duty_cycle = 2 ** 15
 
-pwm.duty_cycle = False
+pwm.duty_cycle = int(65355)
 
 prevState = False
 startTime = float(time.monotonic())
@@ -29,13 +29,11 @@ lastVal = False
 print("innit")
 while True:
     intTime +=1
-    time.sleep(0.001)
 
 
     if intTime % 250 ==1 :
-        log +=1
-        
-        print(interrupts)
+    
+        print(f"{interrupts} ")
 
     if photoIn.value and photoIn.value != lastVal:
         interrupts += 1 
