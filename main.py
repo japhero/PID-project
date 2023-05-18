@@ -5,49 +5,76 @@ from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 import digitalio
 
-led = digitalio.DigitalInOut(board.D13)
-led.direction = digitalio.Direction.OUTPUT
+lcd = digitalio.DigitalInOut(board.D8)
+lcd.direction = digitalio.Direction.OUTPUT
 
-led.value = False
-time.sleep(.5)
-led.value = True
+# lcd.value = False
+# time.sleep(.5)
+lcd.value = True
 i2c = board.I2C()
-lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x23), num_rows=2, num_cols=16)
 
 
 
-enc = rotaryio.IncrementalEncoder(board.D9, board.D10,2)
+enc = rotaryio.IncrementalEncoder(board.D7, board.D6,2)
 last_position = None
 
-encBtn = digitalio.DigitalInOut(board.D11)
+encBtn = digitalio.DigitalInOut(board.D4)
 encbtn = digitalio.Direction.INPUT
-encbtn  = digitalio.Pull.UP
+encbtn  = digitalio.Pull.DOWN
 
 prevState =0
 
-def btnControl(buttonVal ,out):
+def btnControl(buttonVal ):
     global prevState
     if buttonVal and buttonVal != prevState:
         prevState = True
-        if out == 0:
-            print("PID           ACTIVE")
-        elif out == 1:
-            print("No PID        INACTVE")
+
     elif  not buttonVal:
         prevState = False
+
+def menu(item):
+    if item == 1:
+        print("menu one")
+    elif item == 3:
+        print("case 2")
+    elif item == 3:
+        print("case 3 ")
+
      
         
 
 def retEnc(x):
-    array = ["PID","No PID"] 
-    output = x%2
+    array = ["PID","No PID","Setpoint"] 
+    output = x%3
     btnControl(encBtn.value,output)
     return array[output]
 
 
+class LCDPrinter:
+
+    def __init__(self,innitPrint,LCDObject):
+        self.LCDObject = LCDObject
+        self.innitPrint = innitPrint
+        self.lastPrint = self.innitPrint
+
+
+    def print(self,UsrString):
+        self.Usrinput = UsrString
+        #later implement system to print on multiple collums 
+        if self.Usrinput != self.lastPrint:
+            for x in range(15):
+                self.LCDObject.print(" ")
+            self.LCDObject.print(str(self.Usrinput))
+            self.lastPrint = self.Usrinput
+        
+
+
+printer = LCDPrinter("innit",lcd)
+
 
 while True:
-    
-    time.sleep(.1)
-    print(f"{retEnc(enc.position)} {enc.position} {encBtn.value}")
+    printer.print("hello world")
+    print(menu(3))
+    print(f" {enc.position} {encBtn.value}")
         

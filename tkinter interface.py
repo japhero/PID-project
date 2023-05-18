@@ -21,6 +21,8 @@ PidState = False
 
 setPoint =0
 
+
+
 def setButtonVar(*args):
     global buttonVar, PidState, mainMenu,setPoint
     if int(scaleVal.get()) % 3 == 2 and ( mainMenu == 1 or mainMenu ==2):
