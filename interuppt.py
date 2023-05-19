@@ -15,39 +15,52 @@ pwm.duty_cycle = 2 ** 15
 
 pwm.duty_cycle = int(65355)
 
-prevState = False
-startTime = float(time.monotonic())
-counter = 0
-
-
-
-
-interrupts =0
-intTime =0
-log = 0
-lastVal = False
-
-Time1 =0
-time2=0
-RPM =0
 print("innit")
-while True:
-    intTime +=1
 
-
-    if intTime % 500 ==1 :
+class RPMCalculator:
     
-        print(f"{interrupts} RPM: {RPM}")
+    def __init__(self) -> None:
+        
+        self.printingDelayCounter =0
+        self.lastPollingVal = False
+        self.RPM = 0
+        self.totalInterrupts =0
+        
+    def debug(self,DelayInterval=1):
+        
+        if self.lastPollingVal % DelayInterval ==0 :
+            #all debug statements 
+            print(f"{self.totalInterrupts} RPM: {self.RPM}")
+    
+    def RpmCompute(self):
+        
+        if self.totalInterrupts % 10 == 0:
+            self.time1= time.monotonic()
+            
+        elif self.totalInterrupts % 10 == 9:
+            self.time2 = time.monotonic()
+            self.RPM = 60/((self.time2-self.time1)/5)
+            return self.RPM
+            # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
+            # gets the diffrence then devide 60 by that number to get the RPM
+            
+    def pollingForInterrupts(self):
+        
+        if photoIn.value and photoIn.value != self.lastPollingVal:
+            self.totalInterrupts += 1 
+            self.lastPollingVal = True
+            
+        if  not photoIn.value:
+            self.lastPollingVal = False
 
-    # if interrupts % 10 == 0:
-    #     time1= time.monotonic()
-    # elif interrupts % 10 == 9:
-    #     time2 = time.monotonic()
-    #     RPM = 60/((time2-time1)/5)
-    #     # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and gets the diffrence then devide 60 by that number to get the RPM
+RPMCalculator1 = RPMCalculator()
 
-    if photoIn.value and photoIn.value != lastVal:
-        interrupts += 1 
-        lastVal = True
-    if  not photoIn.value:
-        lastVal = False
+while True:
+    
+    RPMCalculator1.printingDelayCounter += 1
+
+    RPMCalculator1.debug(DelayInterval=500)
+    
+    RPMCalculator1.RpmCompute()
+    
+    RPMCalculator1.pollingForInterrupts()
