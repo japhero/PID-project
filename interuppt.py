@@ -26,9 +26,8 @@ class RPMCalculator:
         self.RPM = 0
         self.totalInterrupts =0
         
-    def debug(self,DelayInterval=1):
-        
-        if self.lastPollingVal % DelayInterval ==0 :
+    def debug(self,DelayInterval=500):
+        if self.printingDelayCounter % DelayInterval == 1 :
             #all debug statements 
             print(f"{self.totalInterrupts} RPM: {self.RPM}")
     
@@ -56,7 +55,7 @@ class RPMCalculator:
 RPMCalculator1 = RPMCalculator()
 
 while True:
-    
+
     RPMCalculator1.printingDelayCounter += 1
 
     RPMCalculator1.debug(DelayInterval=500)
@@ -64,3 +63,4 @@ while True:
     RPMCalculator1.RpmCompute()
     
     RPMCalculator1.pollingForInterrupts()
+    
