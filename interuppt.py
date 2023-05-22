@@ -56,11 +56,10 @@ RPMCalculator1 = RPMCalculator()
 
 while True:
 
-    RPMCalculator1.printingDelayCounter += 1
 
+
+    RPMCalculator1.printingDelayCounter += 1
     RPMCalculator1.debug(DelayInterval=500)
-    
     RPMCalculator1.RpmCompute()
-    
     RPMCalculator1.pollingForInterrupts()
     
