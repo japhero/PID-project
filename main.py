@@ -5,6 +5,10 @@ from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 import digitalio
 
+import PID
+
+x = PID()
+
 lcd = digitalio.DigitalInOut(board.D8)
 lcd.direction = digitalio.Direction.OUTPUT
 
@@ -33,15 +37,7 @@ def btnControl(buttonVal ):
     elif  not buttonVal:
         prevState = False
 
-def menu(item):
-    if item == 1:
-        print("menu one")
-    elif item == 3:
-        print("case 2")
-    elif item == 3:
-        print("case 3 ")
 
-     
         
 
 def retEnc(x):
@@ -63,7 +59,7 @@ class LCDPrinter:
         self.Usrinput = UsrString
         #later implement system to print on multiple collums 
         if self.Usrinput != self.lastPrint:
-            for x in range(15):
+            for x in range(32):
                 self.LCDObject.print(" ")
             self.LCDObject.print(str(self.Usrinput))
             self.lastPrint = self.Usrinput
@@ -72,9 +68,29 @@ class LCDPrinter:
 
 printer = LCDPrinter("innit",lcd)
 
+setpoint =0
+
+def menu(item):
+    if item == 1:
+        printer.print("PID")
+    elif item == 3:
+        printer.print("PIDOFF")
+    elif item == 3:
+        printer.print("Setpoint")
+    elif item == 4:
+        printer.print(f"setpoint = {setpoint}")
+    
+
+     
 
 while True:
+    if abs(enc.position) % 3 == 2:
+        menu(3)
+    elif abs(enc.position) % 3 == 1:
+        menu(2)
+    elif abs(enc.position) % 3 == 0:
+        menu(1)
+
     printer.print("hello world")
-    print(menu(3))
     print(f" {enc.position} {encBtn.value}")
         
