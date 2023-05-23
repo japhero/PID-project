@@ -52,14 +52,14 @@ class RPMCalculator:
         if  not photoIn.value:
             self.lastPollingVal = False
 
-RPMCalculator1 = RPMCalculator()
+RPMCalc = RPMCalculator()
 
 while True:
 
 
 
-    RPMCalculator1.printingDelayCounter += 1
-    RPMCalculator1.debug(DelayInterval=500)
-    RPMCalculator1.RpmCompute()
-    RPMCalculator1.pollingForInterrupts()
+    RPMCalc.printingDelayCounter += 1
+    RPMCalc.debug(DelayInterval=500)
+    RPMCalc.RpmCompute()
+    RPMCalc.pollingForInterrupts()
     

@@ -41,14 +41,6 @@ def btnControl(buttonVal ):
         prevState = False
 
 
-        
-
-def retEnc(x):
-    array = ["PID","No PID","Setpoint"] 
-    output = x%3
-    btnControl(encBtn.value,output)
-    return array[output]
-
 
 class LCDPrinter:
 
@@ -81,7 +73,8 @@ class RPMCalculator:
     def debug(self,DelayInterval=500):
         if self.printingDelayCounter % DelayInterval == 1 :
             #all debug statements 
-            print(f"{self.totalInterrupts} RPM: {self.RPM}")
+            #print(f"{self.totalInterrupts} RPM: {self.RPM}")
+            print(f" {enc.position} {encBtn.value} {enc.position % 3}")
     
     def RpmCompute(self):
         
@@ -104,42 +97,51 @@ class RPMCalculator:
         if  not photoIn.value:
             self.lastPollingVal = False
 
-RPMCalculator1 = RPMCalculator()
-
+RPMCalc = RPMCalculator()
 
 printer = LCDPrinter("innit",lcd)
 
 setpoint =0
 
-RPM =0
-
 def menu(item):
     if item == 1:
-        printer.print(f"PID \nRPM: {RPM}")
+        printer.print(f"PID \nRPM: {RPMCalc.RPM}")
     elif item == 2:
-        printer.print(f"PIDOFF \nRPM: {RPM}")
+        printer.print(f"PIDOFF \nRPM: {RPMCalc.RPM}")
     elif item == 3:
-        printer.print(f"ChangeSetpoint \nRPM: {RPM}")
+        printer.print(f"ChangeSetpoint \nRPM: {RPMCalc.RPM}")
     elif item == 4:
         printer.print(f"setpoint = {setpoint}")
     
 
      
-
+PIDon = False
 while True:
-    if abs(enc.position) % 3 == 0:
+    if abs(enc.position) % 2 == 0 and PIDon:
         menu(1)
-    elif abs(enc.position) % 3 == 1:
+        PIDon == True
+        if btnControl(encBtn.value):
+            PIDon = False
+    elif abs(enc.position) % 2 == 0 and not PIDon:
         menu(2)
-    elif abs(enc.position) % 3 == 2 and btnControl(encBtn.value):
+        PIDon = False
+        if btnControl(encBtn.value):
+            PIDon = True
+    elif abs(enc.position) % 2 == 1 and btnControl(encBtn.value):
         enteredVal = abs(enc.position)
         while encBtn.value:
             menu(4)
-            print(f" {enc.position} {encBtn.value} {enc.position % 3}")
+            RPMCalc.printingDelayCounter += 1
+            RPMCalc.debug(DelayInterval=500)
+            RPMCalc.RpmCompute()
+            RPMCalc.pollingForInterrupts()
             setpoint = 100*(abs(enc.position) - enteredVal)
     else:
         menu(3)
 
     
-    print(f" {enc.position} {encBtn.value} {enc.position % 3}")
+    RPMCalc.printingDelayCounter += 1
+    RPMCalc.debug(DelayInterval=500)
+    RPMCalc.RpmCompute()
+    RPMCalc.pollingForInterrupts()
         
