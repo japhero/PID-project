@@ -11,8 +11,8 @@ import digitalio
 lcd = digitalio.DigitalInOut(board.D8)
 lcd.direction = digitalio.Direction.OUTPUT
 
-# lcd.value = False
-# time.sleep(.5)
+lcd.value = False
+time.sleep(.5)
 lcd.value = True
 i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x23), num_rows=2, num_cols=16)
