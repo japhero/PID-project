@@ -59,6 +59,7 @@ We approach the problem of calculating rpm by getting 2 time variables one at th
 RPM = 60/((self.time2-self.time1))
 ```
 ![](https://i.imgur.com/743DyXs.png)
+
 The calculation is just taking the time between the interrupt second interrupt/A full rotation - the time of the last full rotation. You may ask why wouldn't you just get the time at full rotation this is because of the function used Monatomic time is a set point of time not a sort of stopwatch, therefore we can't just call it and assume the timer started on the first interrupt for example if want the time in between 8am and 10am we would take 10 and subtract 8.
 
 
