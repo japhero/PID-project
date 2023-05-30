@@ -60,5 +60,14 @@ RPM = 60/((self.time2-self.time1))
 ```
 ![](https://i.imgur.com/743DyXs.png)
 
+# CAD
+We chose to use a simple CAD design that was simply a box to discretely hold all of our components. It featured a wheel on the top that was friction fit onto the shaft of a DC motor. We had to cut three different wheels because they were breaking when they made contact with a foriegn object. We had originally wanted to just use a long rectangle as our spinner but this was too hard to make accurate with the small size of the gap that it needed to fit through. We had some minor issues with the battery mount. We found that we were often swapping the batteries which was annoying to do because we had to remove our breadboard to access the pack. We solved this so we recut the bottom plate so that we could mount the battery pack facing out the bottom.
+
+
+## OnShape Document
+https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0
+
+
+
 
 
