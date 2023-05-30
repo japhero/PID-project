@@ -69,30 +69,34 @@ class RPMCalculator:
         self.lastPollingVal = False
         self.RPM = 0
         self.totalInterrupts =0
+        self.time1 =0
+        self.time2 =0
         
     def debug(self,DelayInterval=500):
         if self.printingDelayCounter % DelayInterval == 1 :
             #all debug statements 
-            #print(f"{self.totalInterrupts} RPM: {self.RPM}")
-            print(f" {enc.position} {encBtn.value} {enc.position % 3}")
+            print(f"{self.totalInterrupts} RPM: {self.RPM}")
     
-    def RpmCompute(self):
+
+
         
-        if self.totalInterrupts % 10 == 0:
-            self.time1= time.monotonic()
             
-        elif self.totalInterrupts % 10 == 9:
-            self.time2 = time.monotonic()
-            self.RPM = 60/((self.time2-self.time1)/5)
-            return self.RPM
-            # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
-            # gets the diffrence then devide 60 by that number to get the RPM
-            
-    def pollingForInterrupts(self):
+    def RPMcompute(self):
         
         if photoIn.value and photoIn.value != self.lastPollingVal:
             self.totalInterrupts += 1 
             self.lastPollingVal = True
+
+            if self.totalInterrupts % 2 == 0:
+                self.time1= time.monotonic()
+                self.RPM = 1/((self.time1-self.time2)/5)
+            
+            elif self.totalInterrupts % 2 == 1:
+                self.time2 = time.monotonic()
+                self.RPM = 1/((self.time2-self.time1)/5)
+                return self.RPM
+                # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
+                # gets the diffrence then devide 60 by that number to get the RPM
             
         if  not photoIn.value:
             self.lastPollingVal = False
@@ -133,8 +137,7 @@ while True:
             menu(4)
             RPMCalc.printingDelayCounter += 1
             RPMCalc.debug(DelayInterval=500)
-            RPMCalc.RpmCompute()
-            RPMCalc.pollingForInterrupts()
+            RPMCalc.RPMcompute()
             setpoint = 100*(abs(enc.position) - enteredVal)
     else:
         menu(3)
@@ -142,6 +145,6 @@ while True:
     
     RPMCalc.printingDelayCounter += 1
     RPMCalc.debug(DelayInterval=500)
-    RPMCalc.RpmCompute()
-    RPMCalc.pollingForInterrupts()
+    RPMCalc.RPMcompute()
+    
         
