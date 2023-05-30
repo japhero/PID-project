@@ -38,7 +38,7 @@ def RPMcompute(self):
             
             elif self.totalInterrupts % 2 == 1:
                 self.time2 = time.monotonic()
-	                self.RPM = 60/((self.time2-self.time1))
+	            self.RPM = 60/((self.time2-self.time1))
                 return self.RPM
                 
         if  not photoIn.value:
