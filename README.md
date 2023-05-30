@@ -59,6 +59,8 @@ We approach the problem of calculating rpm by getting 2 time variables one at th
 RPM = 60/((self.time2-self.time1))
 ```
 ![](https://i.imgur.com/743DyXs.png)
+The calculation is just taking the time between the interrupt second interrupt/A full rotation - the time of the last full rotation. You may ask why wouldn't you just get the time at full rotation this is because of the function used Monatomic time is a set point of time not a sort of stopwatch, therefore we can't just call it and assume the timer started on the first interrupt for example if want the time in between 8am and 10am we would take 10 and subtract 8.
+
 
 # CAD
 We chose to use a simple CAD design that was simply a box to discretely hold all of our components. It featured a wheel on the top that was friction fit onto the shaft of a DC motor. We had to cut three different wheels because they were breaking when they made contact with a foriegn object. We had originally wanted to just use a long rectangle as our spinner but this was too hard to make accurate with the small size of the gap that it needed to fit through. We had some minor issues with the battery mount. We found that we were often swapping the batteries which was annoying to do because we had to remove our breadboard to access the pack. We solved this so we recut the bottom plate so that we could mount the battery pack facing out the bottom.
