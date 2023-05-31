@@ -1,28 +1,43 @@
-# PID-project
+
 
 # TIMELINE
 
-Week 1: Paul started to write some pseudo code and solved problems with our LCD. Cyrus started work on CAD and created a first version of the box.
-Week 2: Paul continued writing code and made an interface for the PID. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
-Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
-Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
-Week 5: Got Wiring functional and made the photointerupter detect interupts.
-Week 6: Made an equation for the RPM and cleaned up the wiring 
-Week 7: Fine tuning 
-Week 8: More fine tuning and documenting
+* Week 1: Paul started to write some pseudo code and solved problems with our LCD. Cyrus started work on CAD and created a first version of the box.
+* Week 2: Paul continued writing code and made an seperate interface for the PID and Tkinter window proof of concept for LCD. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
+* Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
+* Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
+* Week 5: Got Wiring functional and made the photointerupter detect interupts. LCD circut and begining of motor control.
+* Week 6: Bug fixed previous wiring and completed MOSFET motor control. First RPM iteration.
+* Week 7: Bugg Fixing RPM code to get consistancy and cleaned up the design to incorporate all components  
+* Week 8: Finished LCD code began PID implementation and Documentation
 
-# WIRING
-ROT ENCODER (CLK, 9) (DT, 10) (SW, 11)
-PHOTO INT (IN, 7)
-SERVO (IN, 13)
+# Electrical wiring
+
+The wiring Consists of 3 main circuits  
+
+# Planning/Research 
+
+## PID Planning
+Originally the class had not found a circuit python PID library, so i thought i might do the class a favor by creating one along with a graphing utility. Eventually we found a library and i realized i didn't have the time to create my own, although the graphing utility 
+
+### Paul's PID
+The source to my own PID is [here](https://github.com/japhero/PID-project/blob/master/LibCode/PIDNoClass.py) for anyone interested, it uses my own graphing library based in the MatPlotLib PyPI library. It uses a Tkinter window to control the setpoint and the graphs of the PID input and output in a new window. Note, the graphing library (plotLive) might have its own repository at some point.
+
+#### PID math 
+To write my own PID, I had to learn the math that calculates the function of PID. As i had never taken any advance calculus classes so the words Integral and Derivative were new concepts, to understand these I created a list of resources that helped me understand the math and PID in general.
+
+* [Bret proportional on measurement ](http://brettbeauregard.com/blog/2017/06/introducing-proportional-on-measurement/)
+* [integral calculation with trapezoids](https://en.wikipedia.org/wiki/Trapezoidal_rule)
+* [Integrals kahn academy](https://youtu.be/__Uw1SXPW7s)
+* [wiki on PID](https://en.wikipedia.org/wiki/PID_controller#Fundamental_operation)
+### Takeaways 
+Overall writing my own PID was a very good way to learn the system and definitely helped me understand the system and how it works and also refreshed me on more complex code when writing the graphing utility.
 
 <img src="https://i.stack.imgur.com/AjURy.png" alt="enter image description here">
-https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying 
-
 
 This is the explanation for individual code segments and ideas for future reference and for grading of the PID assignment 
 
-
+# Code
 
 ## RPM computation
 The RPM computation is the system which takes the Rotations per minute and also manages the overall debug functions to efficiently allow consistent output.
