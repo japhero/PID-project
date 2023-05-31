@@ -6,10 +6,10 @@ Week 1: Paul started to write some pseudo code and solved problems with our LCD.
 Week 2: Paul continued writing code and made an interface for the PID. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
 Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
 Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
-Week 5:
-Week 6:
-Week 7:
-Week 8:
+Week 5: Got Wiring functional and made the photointerupter detect interupts.
+Week 6: Made an equation for the RPM and cleaned up the wiring 
+Week 7: Fine tuning 
+Week 8: More fine tuning and documenting
 
 # WIRING
 ROT ENCODER (CLK, 9) (DT, 10) (SW, 11)
