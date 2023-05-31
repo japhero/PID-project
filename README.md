@@ -44,8 +44,8 @@ The RPM computation is the system which takes the Rotations per minute and also 
 
 ### Initial development Problems
 The first solutions and the problems with those solutions
-* ASYNCIO was a solution that was put on the table but seemed to be a way to simulate the asynchronous ability that interrupts gave us. This however didn't seem to be plausible as the Library would be to difficult to use in the short time frame that we had and would force us to have everything in classes as to keep persistent variables making the code much harder to write and much more complicated.
-* Polling was the second option and the currently implemented solution. Polling is just checking the pin for a constant cycle and updating variables on the change in that pin. This differs with interrupts as the program doesn't stop and run the interrupt loop as soon as the interrupt pin is triggered. This causes problems as if the value is switching faster than the program loop than it simply will skip that input.
+* ASYNCIO was a solution that was put on the table but seemed to be a way to simulate the asynchronous ability that interrupts gave us. This however didn't seem to be plausible as the Library would be to difficult to use in the short time frame that we had and would force us to have everything in classes as to keep persistent variables, making the code much harder to write and much more complicated.
+* Polling was the second option and the currently implemented solution. Polling is just checking the pin for a constant cycle and updating variables on the change in that pin. This differs with interrupts, as the program doesn't stop and run the interrupt loop as soon as the interrupt pin is triggered. This causes problems as if the value is switching faster than the program loop than it simply will skip that input.
 
 ### Code analysis and explanation
 
@@ -62,7 +62,7 @@ def RPMcompute(self):
             
             elif self.totalInterrupts % 2 == 1:
                 self.time2 = time.monotonic()
-	            self.RPM = 60/((self.time2-self.time1))
+	                self.RPM = 60/((self.time2-self.time1))
                 return self.RPM
                 
         if  not photoIn.value:
@@ -72,10 +72,15 @@ def RPMcompute(self):
 >Code of the compute function in the RPMCalculator class.
 
 ## Approach
-We approach the problem of calculating rpm by getting 2 time variables one at the first interrupt of the Circle (2 Interrupts per full rotation)  and one at the second interrupt. then we subtract the second by the first to get the difference then on the next cycle we just subtract inversely doing the now "first" but actually second minus the now second. The way that we easily maintain a loop of number is the Modulo operator (<span style="color:orange"> %</span> ) which just divides by a set number and the returns the remainder of that division.  This is very useful when it comes to controlling loops as it sets a forever infinitely increasing number to forever repeat at an interval of <span style = color:lightgreen > 0 until N-1 </span> that's also how we treat the RPM calculations as seen in the code we take an MOD 2 of the total interrupts and therefore can easily forever split the increasing number of interrupts into groups of 0 and 1 as every even interrupt will be 0 and every odd will be 1 giving us the opportunity to get the times and preform the calculations 
+We approach the problem of calculating rpm by getting 2 time variables, one at the first interrupt of the Circle (2 Interrupts per full rotation)  and one at the second interrupt. Then we subtract the second by the first to get the difference, then on the next cycle we just subtract inversely doing the now "first" but actually second minus the now second. The way that we easily maintain a loop of number is the Modulo operator (<span style="color:orange"> %</span>) which just divides by a set number and the returns the remainder of that division.  This is very useful when it comes to controlling loops as it sets a forever infinitely increasing number to forever repeat at an interval of <span style = color:lightgreen > 0 until N-1 </span> that's also how we treat the RPM calculations as seen in the code we take an MOD 2 of the total interrupts and therefore can easily forever split the increasing number of interrupts into groups of 0 and 1 as every even interrupt will be 0 and every odd will be 1 giving us the opportunity to get the times and preform the calculations instead of resetting a counter every loop.
+
+###  Problems 
+* Originally Didn't debounce the rpm calculation, Time 1 or Time 2 this ment that on every loop i would get a new time because it doesn't matter to the program if I just got a new interrupt it will treat the constant loop of the old interrupt number as the current, meaning that it will get a new time for an interrupt that hasn't happened. This was fixed by just putting the rpm calculation inside the actual polling function.
+* The speed of the execution of the original was an issue as printing and doing the calculation every time slowed down the RPM calculation so much that it sometimes skipped over some interrupts giving a very inconsistent number and sometimes throwing a can't divide by 0 error because interrupt time 1 and 2 would be the same and turn out to be 0 and when trying to divide 60 by that number it would throw an error.
 
 <img src = "https://i.imgur.com/rEf0TpX.png" width =400>
-> The graphic is an example of how rpm would be computed for the first 4 interrupts.
+
+> The graphic is an example of how rpm would be computed for the first for interrupts.
 
 #### Calculation
 
@@ -83,6 +88,7 @@ We approach the problem of calculating rpm by getting 2 time variables one at th
 RPM = 60/((self.time2-self.time1))
 ```
 ![](https://i.imgur.com/743DyXs.png)
+
 
 The calculation is just taking the time between the interrupt second interrupt/A full rotation - the time of the last full rotation. You may ask why wouldn't you just get the time at full rotation this is because of the function used Monatomic time is a set point of time not a sort of stopwatch, therefore we can't just call it and assume the timer started on the first interrupt for example if want the time in between 8am and 10am we would take 10 and subtract 8.
 
