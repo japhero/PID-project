@@ -1,6 +1,15 @@
 # PID-project
 
+# TIMELINE
 
+Week 1: Paul started to write some pseudo code and solved problems with our LCD. Cyrus started work on CAD and created a first version of the box.
+Week 2: Paul continued writing code and made an interface for the PID. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
+Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
+Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
+Week 5:
+Week 6:
+Week 7:
+Week 8:
 
 # WIRING
 ROT ENCODER (CLK, 9) (DT, 10) (SW, 11)
@@ -69,5 +78,7 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 
 
 
+# Reflection
+If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals
 
 
