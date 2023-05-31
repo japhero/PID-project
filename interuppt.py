@@ -31,7 +31,7 @@ class RPMCalculator:
     def debug(self,DelayInterval=500):
         if self.printingDelayCounter % DelayInterval == 1 :
             #all debug statements 
-            print(f"{self.totalInterrupts} RPM: {self.RPM}")
+            print(f"{self.totalInterrupts} RPM: {self.RPM} inter {photoIn.value}")
     
 
 
@@ -45,11 +45,12 @@ class RPMCalculator:
 
             if self.totalInterrupts % 2 == 0:
                 self.time1= time.monotonic()
-                self.RPM = 1/((self.time1-self.time2)/5)
+                self.RPM = 1/((self.time2-self.time1)/5)
             
             elif self.totalInterrupts % 2 == 1:
                 self.time2 = time.monotonic()
                 self.RPM = 1/((self.time2-self.time1)/5)
+                self.time1 = self.time2
                 return self.RPM
                 # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
                 # gets the diffrence then devide 60 by that number to get the RPM
@@ -62,8 +63,8 @@ RPMCalc = RPMCalculator()
 while True:
 
 
-    time.sleep(.0001)
+    time.sleep(.001)
     RPMCalc.printingDelayCounter += 1
-    RPMCalc.debug(DelayInterval=500)
+    RPMCalc.debug(DelayInterval=100)
     RPMCalc.RPMcompute()
     
