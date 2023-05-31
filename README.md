@@ -51,7 +51,7 @@ def RPMcompute(self):
 We approach the problem of calculating rpm by getting 2 time variables one at the first interrupt of the Circle (2 Interrupts per full rotation)  and one at the second interrupt. then we subtract the second by the first to get the difference then on the next cycle we just subtract inversely doing the now "first" but actually second minus the now second. The way that we easily maintain a loop of number is the Modulo operator (<span style="color:orange"> %</span> ) which just divides by a set number and the returns the remainder of that division.  This is very useful when it comes to controlling loops as it sets a forever infinitely increasing number to forever repeat at an interval of <span style = color:lightgreen > 0 until N-1 </span> that's also how we treat the RPM calculations as seen in the code we take an MOD 2 of the total interrupts and therefore can easily forever split the increasing number of interrupts into groups of 0 and 1 as every even interrupt will be 0 and every odd will be 1 giving us the opportunity to get the times and preform the calculations 
 
 <img src = "https://i.imgur.com/rEf0TpX.png" width =400>
-> The graphic is an example of how rpm would be computed for the first for interrupts.
+> The graphic is an example of how rpm would be computed for the first 4 interrupts.
 
 #### Calculation
 
