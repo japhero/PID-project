@@ -11,6 +11,24 @@
 * Week 7: Bugg Fixing RPM code to get consistancy and cleaned up the design to incorporate all components  
 * Week 8: Finished LCD code began PID implementation and Documentation
 
+# Materials Used
+
+- Arduino Metro Airlift lite
+- LCD w/ backpack
+- Photointerupter
+- Rotary encoder
+- DC Motor
+- 6xAA 9v battery pack
+- Breadboard 
+- Switch
+- 2x transistors
+- 1 Diode
+- 2 220 Omh resistors
+- Laser Cut box and spinner
+- 
+-
+
+
 # Electrical wiring
 
 The wiring Consists of 3 main circuits  
@@ -251,13 +269,13 @@ This is the main handler for the LCD object, and the fact that it's not a class 
 We chose to use a simple CAD design that was simply a box to discretely hold all of our components. It featured a wheel on the top that was friction fit onto the shaft of a DC motor. We had to cut three different wheels because they were breaking when they made contact with a foriegn object. We had originally wanted to just use a long rectangle as our spinner but this was too hard to make accurate with the small size of the gap that it needed to fit through. We had some minor issues with the battery mount. We found that we were often swapping the batteries which was annoying to do because we had to remove our breadboard to access the pack. We solved this so we recut the bottom plate so that we could mount the battery pack facing out the bottom.
 
 # PIC 
-inspriation for our design
+
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/IMG_0293.jpg" width =400>
-CAD 1
+
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%202.PNG" width =400>
-CAD 2
+
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%203.PNG" width =400>
-CAD 3
+
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX.PNG" width =400>
 
 ## OnShape Document
