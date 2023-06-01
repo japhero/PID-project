@@ -4,7 +4,7 @@ import board
 from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 import digitalio
-
+import pwmio
 
 
 
@@ -24,10 +24,14 @@ photoIn.pull  = digitalio.Pull.UP
 enc = rotaryio.IncrementalEncoder(board.D7, board.D6, divisor=2)
 last_position = None    
 
-encBtn = digitalio.DigitalInOut(board.D4)
+encBtn = digitalio.DigitalInOut(board.D5)
 encBtn.direction = digitalio.Direction.INPUT
-encBtn.pull  = digitalio.Pull.UP
+encBtn.pull  = digitalio.Pull.DOWN
 
+pwm = pwmio.PWMOut(board.D11)
+pwm.duty_cycle = 2 ** 15
+
+pwm.duty_cycle = int(65355)
 
 prevState =0
 
@@ -75,7 +79,7 @@ class RPMCalculator:
     def debug(self,DelayInterval=500):
         if self.printingDelayCounter % DelayInterval == 1 :
             #all debug statements 
-            print(f"{self.totalInterrupts} RPM: {self.RPM}")
+            print(f"{self.totalInterrupts} RPM: {self.RPM} btn {encBtn.value}")
     
 
 
@@ -89,11 +93,11 @@ class RPMCalculator:
 
             if self.totalInterrupts % 2 == 0:
                 self.time1= time.monotonic()
-                self.RPM = 1/((self.time1-self.time2)/5)
+                self.RPM = 60/((self.time1-self.time2)/5)
             
             elif self.totalInterrupts % 2 == 1:
                 self.time2 = time.monotonic()
-                self.RPM = 1/((self.time2-self.time1)/5)
+                self.RPM = 60/((self.time2-self.time1)/5)
                 return self.RPM
                 # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
                 # gets the diffrence then devide 60 by that number to get the RPM
@@ -133,12 +137,16 @@ while True:
             PIDon = True
     elif abs(enc.position) % 2 == 1 and btnControl(encBtn.value):
         enteredVal = abs(enc.position)
-        while encBtn.value:
+        while True:
             menu(4)
             RPMCalc.printingDelayCounter += 1
             RPMCalc.debug(DelayInterval=500)
             RPMCalc.RPMcompute()
             setpoint = 100*(abs(enc.position) - enteredVal)
+            
+            if btnControl(encBtn.value):
+                break
+
     else:
         menu(3)
 
