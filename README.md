@@ -252,14 +252,14 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 
 # PIC 
 inspriation for our design
-![inspriation for our design](https://github.com/japhero/PID-project/blob/master/Media/IMG_0293.jpg)
-CAD1
-![CAD1](https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%202.PNG)
-CAD2
-![CAD2](https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%203.PNG)
-CAD3
-![CAD3](https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX.PNG)
-![]()
+<img src = "https://github.com/japhero/PID-project/blob/master/Media/IMG_0293.jpg" width =400>
+CAD 1
+<img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%202.PNG" width =400>
+CAD 2
+<img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%203.PNG" width =400>
+CAD 3
+<img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX.PNG" width =400>
+
 ## OnShape Document
 https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0
 
