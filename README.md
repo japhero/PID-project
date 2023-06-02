@@ -15,6 +15,8 @@
     * [Materials Bill](#materials-used)
 * [Planning](#planningresearch)
     * [Pauls Pid](#pauls-pid)
+    * [LCD planning](#lcd-planning)
+    * [RPM planning](#rpm-planning)
     * [TimeLine](#timeline)
 * [Cad docs](#cad)
     * [description](#cad)
