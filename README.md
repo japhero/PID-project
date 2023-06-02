@@ -1,17 +1,46 @@
 
+# Table of contents
+* [Code Docs](#code)
+    * [RPM](#rpm-computation)
+        * [Aproach](#approach)
+        * [Calculation](#calculation)
+        * [Code Problems](#problems)
+    * [LCD](#lcd-menu)
+        * [LCD Print Debounce](#printing-to-the-lcd)
+        * [LCD menu concept](#lcd-menu)
+        * [Code anyalsis](#code-explanation)
+* [Wiring](#wiring)
+    * [MOSFET](#mosfet-transistor)
+    * [Main Wiring](#wiring)
+    * [Materials Bill](#materials-used)
+* [Planning](#planningresearch)
+    * [Pauls Pid](#pauls-pid)
+    * [TimeLine](#timeline)
+* [Cad docs](#cad)
+    * [description](#cad)
+    * [Pictures](#pic)
+   
 
-# TIMELINE
 
-* Week 1: Paul started to write some pseudo code and solved problems with our LCD. Cyrus started work on CAD and created a first version of the box.
-* Week 2: Paul continued writing code and made an seperate interface for the PID and Tkinter window proof of concept for LCD. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
-* Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
-* Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
-* Week 5: Got Wiring functional and made the photointerupter detect interupts. LCD circut and begining of motor control.
-* Week 6: Bug fixed previous wiring and completed MOSFET motor control. First RPM iteration.
-* Week 7: Bugg Fixing RPM code to get consistancy and cleaned up the design to incorporate all components  
-* Week 8: Finished LCD code began PID implementation and Documentation
+# Wiring
+The wiring was 3 main circuits, although practically it was just 3 circuits and the rest required more of just "plug and play" style not really a circuit
 
-# Materials Used
+<img src = "https://i.imgur.com/wU3Dmu0.png"  width =600>
+
+> note that we didn't separately wire the 9volt and 6volt but because the modified backpack doesn't exist we had to use those parts 
+
+### LCD wiring 
+Our solution to the "LCD" problem or the fact that the LCD draws a lot of current to start, blocking the microcontroller from booting if it is turned on was to initialize the LCD power in the script by creating a transistor to allow the flow of power and then by virtue of the script turning the LCD on it has to innit for the LCD to even turn on.
+
+
+## MOSFET Transistor
+The MOSFET was one of the more challenging things to use because it was a different transistor type and no one had really documented it, so we researched the individual part to figure out the specs and find a matching wiring diagram which as it turns out isn't too different from the current transistor layout it just allows way more current and voltage giving us more SPEEEEED.
+
+<img src="https://i.stack.imgur.com/AjURy.png" width =600>
+
+> Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
+
+## Materials Used
 
 - Arduino Metro Airlift lite
 - LCD w/ backpack
@@ -27,11 +56,6 @@
 - Laser Cut box and spinner
 - 
 -
-
-
-# Electrical wiring
-
-The wiring Consists of 3 main circuits  
 
 # Planning/Research 
 
@@ -51,7 +75,18 @@ To write my own PID, I had to learn the math that calculates the function of PID
 ### Takeaways 
 Overall writing my own PID was a very good way to learn the system and definitely helped me understand the system and how it works and also refreshed me on more complex code when writing the graphing utility.
 
-<img src="https://i.stack.imgur.com/AjURy.png" alt="enter image description here">
+# TIMELINE
+
+* Week 1: Paul started to write some pseudo code and solved problems with our LCD. Cyrus started work on CAD and created a first version of the box.
+* Week 2: Paul continued writing code and made an seperate interface for the PID and Tkinter window proof of concept for LCD. Cyrus Finalized the CAD design for the box and made a first version of the spinner.
+* Week 3: Paul started work on the wiring and Cyrus mounted down some of the components. 
+* Week 4: The original spinner wasn't working so Cyrus designed a new one that was a circle instead of a rectangle.
+* Week 5: Got Wiring functional and made the photointerupter detect interupts. LCD circut and begining of motor control.
+* Week 6: Bug fixed previous wiring and completed MOSFET motor control. First RPM iteration.
+* Week 7: Bugg Fixing RPM code to get consistancy and cleaned up the design to incorporate all components  
+* Week 8: Finished LCD code began PID implementation and Documentation
+
+
 
 This is the explanation for individual code segments and ideas for future reference and for grading of the PID assignment 
 
@@ -80,7 +115,7 @@ def RPMcompute(self):
             
             elif self.totalInterrupts % 2 == 1:
                 self.time2 = time.monotonic()
-	                self.RPM = 60/((self.time2-self.time1))
+	            self.RPM = 60/((self.time2-self.time1))
                 return self.RPM
                 
         if  not photoIn.value:
