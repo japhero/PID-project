@@ -109,14 +109,14 @@ Our solution to the "LCD" problem or the fact that the LCD draws a lot of curren
 ## MOSFET Transistor
 The MOSFET was one of the more challenging things to use because it was a different transistor type and no one had really documented it, so we researched the individual part to figure out the specs and find a matching wiring diagram which as it turns out isn't too different from the current transistor layout it just allows way more current and voltage giving us more SPEEEEED.
 
+<img src="https://i.stack.imgur.com/AjURy.png" width =600>
+
+> Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
+
 ## Back EMF
 
 https://www.pololu.com/docs/0J15/9 
 I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. 
-
-<img src="https://i.stack.imgur.com/AjURy.png" width =600>
-
-> Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
 
 ## Materials Used
 
@@ -381,7 +381,8 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 
 
 # Reflection
-If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.
+If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. 
+
 
 
 
