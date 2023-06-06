@@ -113,6 +113,11 @@ The MOSFET was one of the more challenging things to use because it was a differ
 
 > Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
 
+## Back EMF
+
+https://www.pololu.com/docs/0J15/9 
+I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. The reason that we didnt fix this was because we had never heard of this until the end of the project when helmstedder told us what to do.
+
 ## Materials Used
 
 - Arduino Metro Airlift lite
@@ -376,6 +381,8 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 
 
 # Reflection
-If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals
+If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. 
+
+
 
 
