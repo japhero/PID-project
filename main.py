@@ -34,6 +34,8 @@ pwm.duty_cycle = 2 ** 15
 pwm.duty_cycle = int(65355)
 
 prevState =0
+# Innitializations and global variables 
+
 
 def btnControl(buttonVal ):
     global prevState
@@ -43,29 +45,31 @@ def btnControl(buttonVal ):
 
     elif  not buttonVal:
         prevState = False
+# global Debounce function for the menu allows us to adapt to debounce several things instead of writing indidvidual debounce
 
 
-
-class LCDPrinter:
+class LCDPrinter: 
 
     def __init__(self,innitPrint,LCDObject):
         self.LCDObject = LCDObject
         self.innitPrint = innitPrint
         self.lastPrint = self.innitPrint
-
+        # Internal variables for the class
 
     def print(self,UsrString):
         self.Usrinput = UsrString
-        #later implement system to print on multiple collums 
+        # Debounce for printing meaning more effiecent printing and cleaner lcd's
         if self.Usrinput != self.lastPrint:
             # for x in range(32):
             #     self.LCDObject.print(" ")
+            # more effiecnt clearing system if needed. instead of .clear()
             self.LCDObject.clear()
             self.LCDObject.print(str(self.Usrinput))
             self.lastPrint = self.Usrinput
         
 
 class RPMCalculator:
+    # main class for getting the rpm and effiecntly printing the debug
     
     def __init__(self) -> None:
         
@@ -75,10 +79,13 @@ class RPMCalculator:
         self.totalInterrupts =0
         self.time1 =0
         self.time2 =0
+        #innits inside of class
         
     def debug(self,DelayInterval=500):
-        if self.printingDelayCounter % DelayInterval == 1 :
-            #all debug statements 
+        if self.printingDelayCounter % DelayInterval == 1 : 
+            # Location for all debug statements.
+            # Better reasorce allocation  for printing debug by adding a delay to prints 
+            # Doesnt mess with logic as that is seperate.
             print(f"{self.totalInterrupts} RPM: {self.RPM} btn {encBtn.value}")
     
 
@@ -86,7 +93,7 @@ class RPMCalculator:
         
             
     def RPMcompute(self):
-        
+        self.printingDelayCounter += 1
         if photoIn.value and photoIn.value != self.lastPollingVal:
             self.totalInterrupts += 1 
             self.lastPollingVal = True
@@ -99,11 +106,12 @@ class RPMCalculator:
                 self.time2 = time.monotonic()
                 self.RPM = 60/((self.time2-self.time1)/5)
                 return self.RPM
-                # takes time at first and 10th interupt on cycyle and takes time from first interrupt and 10th and 
+                # takes time at first and second interupt on cycyle and takes time from first interrupt and second and 
                 # gets the diffrence then devide 60 by that number to get the RPM
             
         if  not photoIn.value:
             self.lastPollingVal = False
+            #debounce for photo interrupter
 
 RPMCalc = RPMCalculator()
 
@@ -120,7 +128,7 @@ def menu(item):
         printer.print(f"ChangeSetpoint \nRPM: {RPMCalc.RPM}")
     elif item == 4:
         printer.print(f"setpoint = {setpoint}")
-    
+    # Seperate print statments for LCD
 
      
 PIDon = False
@@ -131,6 +139,7 @@ while True:
         if btnControl(encBtn.value):
             PIDon = False
     elif abs(enc.position) % 2 == 0 and not PIDon:
+        # Fliping PID on and OFF
         menu(2)
         PIDon = False
         if btnControl(encBtn.value):
@@ -139,20 +148,20 @@ while True:
         enteredVal = abs(enc.position)
         while True:
             menu(4)
-            RPMCalc.printingDelayCounter += 1
             RPMCalc.debug(DelayInterval=500)
             RPMCalc.RPMcompute()
             setpoint = 100*(abs(enc.position) - enteredVal)
-            
+            # internal loop if the setpoint change is entered 
             if btnControl(encBtn.value):
                 break
-
     else:
         menu(3)
+    # LCD loop manages logic of prints and then calls for prints with menu() function
+
 
     
-    RPMCalc.printingDelayCounter += 1
     RPMCalc.debug(DelayInterval=500)
     RPMCalc.RPMcompute()
+    # The basic RPM functions 
     
         
