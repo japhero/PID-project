@@ -364,6 +364,9 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 
 > Cad images 
 
+<img src = "https://github.com/japhero/PID-project/blob/master/Media/unnamed.jpg" >
+
+> Internal wiring of our project, organized through zip ties and labeled with tape.
 
 
 ## OnShape Document
