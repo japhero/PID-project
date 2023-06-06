@@ -22,43 +22,6 @@
     * [description](#cad)
     * [Pictures](#pic)
    
-
-
-# Wiring
-The wiring was 3 main circuits, although practically it was just 3 circuits and the rest required more of just "plug and play" style not really a circuit
-
-<img src = "https://i.imgur.com/wU3Dmu0.png"  width =600>
-
-> note that we didn't separately wire the 9volt and 6volt but because the modified backpack doesn't exist we had to use those parts 
-
-### LCD wiring 
-Our solution to the "LCD" problem or the fact that the LCD draws a lot of current to start, blocking the microcontroller from booting if it is turned on was to initialize the LCD power in the script by creating a transistor to allow the flow of power and then by virtue of the script turning the LCD on it has to innit for the LCD to even turn on.
-
-
-## MOSFET Transistor
-The MOSFET was one of the more challenging things to use because it was a different transistor type and no one had really documented it, so we researched the individual part to figure out the specs and find a matching wiring diagram which as it turns out isn't too different from the current transistor layout it just allows way more current and voltage giving us more SPEEEEED.
-
-<img src="https://i.stack.imgur.com/AjURy.png" width =600>
-
-> Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
-
-## Materials Used
-
-- Arduino Metro Airlift lite
-- LCD w/ backpack
-- Photointerupter
-- Rotary encoder
-- DC Motor
-- 6xAA 9v battery pack
-- Breadboard 
-- Switch
-- 2x transistors
-- 1 Diode
-- 2 220 Omh resistors
-- Laser Cut box and spinner
-- 
--
-
 # Planning/Research 
 
 ## PID Planning
@@ -131,8 +94,42 @@ Always add more time for unconventional bugs as that was the number 1 issue by f
 * Week 8: Finished LCD code began PID implementation and Documentation
 
 
+# Wiring
+The wiring was 3 main circuits, although practically it was just 3 circuits and the rest required more of just "plug and play" style not really a circuit
 
-This is the explanation for individual code segments and ideas for future reference and for grading of the PID assignment 
+<img src = "https://i.imgur.com/wU3Dmu0.png"  width =600>
+
+> note that we didn't separately wire the 9volt and 6volt but because the modified backpack doesn't exist we had to use those parts 
+
+### LCD wiring 
+Our solution to the "LCD" problem or the fact that the LCD draws a lot of current to start, blocking the microcontroller from booting if it is turned on was to initialize the LCD power in the script by creating a transistor to allow the flow of power and then by virtue of the script turning the LCD on it has to innit for the LCD to even turn on.
+
+
+## MOSFET Transistor
+The MOSFET was one of the more challenging things to use because it was a different transistor type and no one had really documented it, so we researched the individual part to figure out the specs and find a matching wiring diagram which as it turns out isn't too different from the current transistor layout it just allows way more current and voltage giving us more SPEEEEED.
+
+<img src="https://i.stack.imgur.com/AjURy.png" width =600>
+
+> Thanks to [This](https://electronics.stackexchange.com/questions/179084/driving-dc-motor-using-a-single-mosfet-why-does-the-motor-spin-without-applying) beautiful stack exchange user for finding this.
+
+## Materials Used
+
+- Arduino Metro Airlift lite
+- LCD w/ backpack
+- Photointerupter
+- Rotary encoder
+- DC Motor
+- 6xAA 9v battery pack
+- Breadboard 
+- Switch
+- 2x transistors
+- 1 Diode
+- 2 220 Omh resistors
+- Laser Cut box and spinner
+- 
+
+
+
 
 # Code
 
@@ -344,6 +341,12 @@ while True:
 ```
 This is the main handler for the LCD object, and the fact that it's not a class or a function shows the crunch on this project :). Anyway the code is split into the different cases the first 2 ifs are for PID on/off all they do is change the name on button press and then the corresponding variable/flag. The actual tree part of the menu is formed by adding a new while true loop that waits for the user to press the button after selecting a new setpoint. Copying the loop is made convenient by the fact that the majority of the code is in the class, making just copying over the functions painless and the exact reason they were created.
 
+
+
+-
+
+
+
 # CAD
 We chose to use a simple CAD design that was simply a box to discretely hold all of our components. We based our design off an older PID project but we made some changes to it. It featured a wheel on the top that was friction fit onto the shaft of a DC motor. We had to cut three different wheels because they were breaking when they made contact with a foriegn object. We had originally wanted to just use a long rectangle as our spinner but this was too hard to make accurate with the small size of the gap that it needed to fit through. We had some minor issues with the battery mount. We found that we were often swapping the batteries which was annoying to do because we had to remove our breadboard to access the pack. We solved this so we recut the bottom plate so that we could mount the battery pack facing out the bottom. We also decided to use a single rotary encoder to control our menu and PID selection. This was going to be harder than just using two switches to control the menu.
 
@@ -351,11 +354,17 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/IMG_0293.jpg" width =400>
 
+> Inspiration for our design
+
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%202.PNG" width =400>
 
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%203.PNG" width =400>
 
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX.PNG" width =400>
+
+> Cad images 
+
+
 
 ## OnShape Document
 https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0
