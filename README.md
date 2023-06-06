@@ -22,6 +22,7 @@
 * [Cad docs](#cad)
     * [description](#cad)
     * [Pictures](#pic)
+* [Reflections](#reflection)
    
 # Planning/Research 
 
@@ -404,5 +405,6 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 - Make your CAD Design loose and large at first and refine it later in the project.
 
 
-
+# Paul's Reflection 
+Overall my takeaways from this project are don't assume that anything will work. This was proven through every aspect of the project. Simple things in the cad and the code where we anticipated a little amount of work took way longer than they should have. Some examples of this are the RPM computed conceptually it works perfectly even with test code computed in normal python gave us the expected results as it really wasn't that hard, but the actual application of those systems through very many unexpected errors. Another takeaway that was kind of taken also from the previous project robot arm was to modulate everything. We can see this in the 2 classes that i made and in the debounce these are a perfect way in my opinion and style to make the code more readable and easier to adapt as having to work in one block is not easy. Also, this benefited me as when having to run the same system in several places, you just need to copy the 2 or so lines that represent the functions. Additionally give yourself much more time for "integration hell" as i like to call it as integrating separate things that work individually gave us many issues.
 
