@@ -116,7 +116,7 @@ The MOSFET was one of the more challenging things to use because it was a differ
 ## Back EMF
 
 https://www.pololu.com/docs/0J15/9 
-I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. 
+I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. The reason that we didnt fix this was because we had never heard of this until the end of the project when helmstedder told us what to do.
 
 ## Materials Used
 
