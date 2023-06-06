@@ -130,7 +130,7 @@ The MOSFET was one of the more challenging things to use because it was a differ
 
 ## Back EMF
 
-https://www.pololu.com/docs/0J15/9 
+[Link to article](https://www.pololu.com/docs/0J15/9) 
 I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. The reason that we didnt fix this was because we had never heard of this until the end of the project when helmstedder told us what to do.
 
 ## Materials Used
@@ -391,7 +391,7 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 
 
 ## OnShape Document
-https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0
+[OnShape DOC](https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0)
 
 
 
@@ -403,7 +403,7 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 - I would have many the box a little bit large so we could have more room to fit components inside.
 - Even though we were able to make everything fit it was tight and I think that it couldve looked more put together.
 - The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.
-- I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. https://www.pololu.com/docs/0J15/9 
+- I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. [Link to article](https://www.pololu.com/docs/0J15/9) 
 - Make your CAD Design loose and large at first and refine it later in the project.
 
 
