@@ -23,7 +23,8 @@
     * [description](#cad)
     * [Pictures](#pic)
 * [Reflections](#reflection)
-   
+   <img src="https://github.com/japhero/PID-project/blob/master/Media/PID%20WORKINH.PNG" width =600>\
+ > Final Project
 # Planning/Research 
 
 ## Goal
@@ -390,6 +391,8 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 > Internal wiring of our project, organized through zip ties and labeled with tape.
 
 
+  <img src="https://github.com/japhero/PID-project/blob/master/Media/PID%20WORKINH.PNG" width =600>
+>Final Project
 ## OnShape Document
 [OnShape DOC](https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa3957762533301028c/e/ac194388e2972accfd85d1c0)
 
