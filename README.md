@@ -382,7 +382,7 @@ We chose to use a simple CAD design that was simply a box to discretely hold all
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX%203.PNG" width =400>
 >View from the bottom
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/PID%20BOX.PNG" width =400>
->
+>Side view
 
 
 <img src = "https://github.com/japhero/PID-project/blob/master/Media/unnamed.jpg" >
