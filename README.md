@@ -25,6 +25,20 @@
    
 # Planning/Research 
 
+## Goal
+
+The goal of our project was to use PID to regulate the speed of a wheel. The wheel should be able to stay at a consistent speed even if it encounters obsticles. We will have it controled by a rotary encoder and have a display on an LCD that is mounted to the box.
+
+## Criteria and Constraints
+
+- Must use a DC motor
+- Must keep within 100 RPM of the target RPM
+- Use PID
+- Use only an Arduino and other standard components in the Sigma Lab
+- Include a power switch and an LED power indicator
+- Use 4 or 6 AA batteries and a battery pack for power
+
+
 ## PID Planning
 Originally the class had not found a circuit python PID library, so i thought i might do the class a favor by creating one along with a graphing utility. Eventually we found a library and i realized i didn't have the time to create my own, although the graphing utility 
 
@@ -132,7 +146,7 @@ I belive that we had an issue with back EMF which caused us to have consistent p
 - 1 Diode
 - 2 220 Omh resistors
 - Laser Cut box and spinner
-- 
+
 
 
 
@@ -381,7 +395,13 @@ https://cvilleschools.onshape.com/documents/3df77543b07a8980f6919976/w/54537fa39
 
 
 # Reflection
-If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. I wouldve had better comunication with my partner so that we could get what we needed the first time. I would have many the box a little bit large so we could have more room to fit components inside. Even though we were able to make everything fit it was tight and I think that it couldve looked more put together. The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. 
+- If I could start over I would still choose to do a simple CAD design because it would save us more time for code and wiring. 
+- I wouldve had better comunication with my partner so that we could get what we needed the first time. 
+- I would have many the box a little bit large so we could have more room to fit components inside.
+- Even though we were able to make everything fit it was tight and I think that it couldve looked more put together.
+- The lid also bothered me, while we were working on it we always had the top off. If I could make it again I would add a hinge for easy access to the internals.
+- I belive that we had an issue with back EMF which caused us to have consistent power issues. We made our motor leads long to allow for easy access but this may have caused issues. If we had more time we couldve soldered in capacitors which keep the current from causing issues. https://www.pololu.com/docs/0J15/9 
+- Make your CAD Design loose and large at first and refine it later in the project.
 
 
 
